@@ -24,7 +24,7 @@ static void add_id_backend(uint32_t *p, enum vc4clist_code val)
 
 static void add_bits(uint32_t *p, uint32_t val, unsigned nbits, unsigned offset)
 {
-	*p |= val & (gen_mask32(nbits) << offset);
+	*p |= (val & gen_mask32(nbits)) << offset;
 }
 
 static void forward_pointer(uint32_t **pp)
