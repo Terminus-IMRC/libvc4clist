@@ -3,9 +3,11 @@
 #include "vc4clist_codes.h"
 
 static uint32_t gen_mask32(unsigned nbits);
-static void add_id(uint32_t *p, enum vc4clist_code val);
+static void add_id_backend(uint32_t *p, enum vc4clist_code val);
 static void add_bits(uint32_t *p, uint32_t val, unsigned nbits, unsigned offset);
 static void forward_pointer(uint32_t **pp);
+
+#define add_id(p, val_suffix) add_id_backend(p, VC4CLIST_CODE_##val_suffix)
 
 static uint32_t gen_mask32(unsigned nbits)
 {
@@ -15,7 +17,7 @@ static uint32_t gen_mask32(unsigned nbits)
 		return (1 << (nbits + 1)) - 1;
 }
 
-static void add_id(uint32_t *p, enum vc4clist_code val)
+static void add_id_backend(uint32_t *p, enum vc4clist_code val)
 {
 	add_bits(p, val, 32, 0);
 }
@@ -32,12 +34,12 @@ static void forward_pointer(uint32_t **pp)
 
 void vc4clist_add_HALT(uint32_t **pp)
 {
-	add_id(*pp, VC4CLIST_CODE_HALT);
+	add_id(*pp, HALT);
 	forward_pointer(pp);
 }
 
 void vc4clist_add_NOP(uint32_t **pp)
 {
-	add_id(*pp, VC4CLIST_CODE_NOP);
+	add_id(*pp, NOP);
 	forward_pointer(pp);
 }
