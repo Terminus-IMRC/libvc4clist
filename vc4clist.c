@@ -43,3 +43,57 @@ void vc4clist_add_NOP(uint32_t **pp)
 	add_id(*pp, NOP);
 	forward_pointer(pp);
 }
+
+void vc4clist_add_FLUSH(uint32_t **pp)
+{
+	add_id(*pp, FLUSH);
+	forward_pointer(pp);
+}
+
+void vc4clist_add_FLUSH_ALL_STATE(uint32_t **pp)
+{
+	add_id(*pp, FLUSH_ALL_STATE);
+	forward_pointer(pp);
+}
+
+void vc4clist_add_START_TILE_BINNING(uint32_t **pp)
+{
+	add_id(*pp, START_TILE_BINNING);
+	forward_pointer(pp);
+}
+
+void vc4clist_add_INCREMENT_SEMAPHORE(uint32_t **pp)
+{
+	add_id(*pp, INCREMENT_SEMAPHORE);
+	forward_pointer(pp);
+}
+
+void vc4clist_add_WAIT_ON_SEMAPHORE(uint32_t **pp)
+{
+	add_id(*pp, WAIT_ON_SEMAPHORE);
+	forward_pointer(pp);
+}
+
+void vc4clist_add_BRANCH(uint32_t **pp, uint32_t addr)
+{
+	add_id(*pp, BRANCH);
+	forward_pointer(pp);
+
+	add_bits(*pp, addr, 32, 0);
+	forward_pointer(pp);
+}
+
+void vc4clist_add_BRANCH_TO_SUB_LIST(uint32_t **pp, uint32_t addr)
+{
+	add_id(*pp, BRANCH_TO_SUB_LIST);
+	forward_pointer(pp);
+
+	add_bits(*pp, addr, 32, 0);
+	forward_pointer(pp);
+}
+
+void vc4clist_add_RETURN_FROM_SUB_LIST(uint32_t **pp)
+{
+	add_id(*pp, RETURN_FROM_SUB_LIST);
+	forward_pointer(pp);
+}
