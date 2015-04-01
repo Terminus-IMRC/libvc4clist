@@ -13,6 +13,8 @@
 	void vc4clist_add_BRANCH(uint32_t **pp, uint32_t addr);
 	void vc4clist_add_BRANCH_TO_SUB_LIST(uint32_t **pp, uint32_t addr);
 	void vc4clist_add_RETURN_FROM_SUB_LIST(uint32_t **pp);
+	void vc4clist_add_STORE_MULTI_SAMPLE_RESOLVED_TILE_COLOR_BUFFER(uint32_t **pp);
+	void vc4clist_add_STORE_MULTI_SAMPLE_RESOLVED_TILE_COLOR_BUFFER_AND_SIGNAL_END_OF_FRAME(uint32_t **pp);
 	void vc4clist_add_STORE_FULL_RESOLUTION_TILE_BUFFER(uint32_t **pp, uint32_t dis_cbw, uint32_t dis_zsbw, uint32_t dis_cow, uint32_t ltof, uint32_t addr);
 	void vc4clist_add_RELOAD_FULL_RESOLUTION_TILE_BUFFER(uint32_t **pp, uint32_t dis_cbr, uint32_t dis_zsbr, uint32_t addr);
 	void vc4clist_add_STORE_TILE_BUFFER_GENERAL(uint32_t **pp, uint32_t bts, uint32_t fmt, uint32_t mode, uint32_t pcf, uint32_t dis_dbs, uint32_t dis_cbc, uint32_t dis_zsbc, uint32_t dis_vgmbc, uint32_t dis_cbd, uint32_t dis_zsbd, uint32_t dis_vgmbd, uint32_t ltof, uint32_t addr);

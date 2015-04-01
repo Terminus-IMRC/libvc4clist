@@ -98,6 +98,18 @@ void vc4clist_add_RETURN_FROM_SUB_LIST(uint32_t **pp)
 	forward_pointer(pp);
 }
 
+void vc4clist_add_STORE_MULTI_SAMPLE_RESOLVED_TILE_COLOR_BUFFER(uint32_t **pp)
+{
+	add_id(*pp, STORE_MULTI_SAMPLE_RESOLVED_TILE_COLOR_BUFFER);
+	forward_pointer(pp);
+}
+
+void vc4clist_add_STORE_MULTI_SAMPLE_RESOLVED_TILE_COLOR_BUFFER_AND_SIGNAL_END_OF_FRAME(uint32_t **pp)
+{
+	add_id(*pp, STORE_MULTI_SAMPLE_RESOLVED_TILE_COLOR_BUFFER_AND_SIGNAL_END_OF_FRAME);
+	forward_pointer(pp);
+}
+
 void vc4clist_add_STORE_FULL_RESOLUTION_TILE_BUFFER(uint32_t **pp, uint32_t dis_cbw, uint32_t dis_zsbw, uint32_t dis_cow, uint32_t ltof, uint32_t addr)
 {
 	addr >>= (32 - 28);
