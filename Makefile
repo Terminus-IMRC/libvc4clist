@@ -1,11 +1,14 @@
-TARGETS := libvc4clist.so
+TARGETS := libvc4clist.so libvc4clist.a
 SRCS := vc4clist.c
 OBJS := $(SRCS:%.c=%.c.o)
 DEPS := $(SRCS:%.c=%.c.d)
 ALLDEPS = $(MAKEFILE_LIST_SANS_DEPS)
 CFLAGS_LOCAL := -Wall -Wextra -O2 -g
+ARFLAGS := cr
 
 CC := gcc
+AR := ar
+RANLIB := ranlib
 RM := rm -f
 
 all:
@@ -33,6 +36,10 @@ COMPILE.c = $(CC) $(CFLAGS) $(EXTRACFLAGS) $(CFLAGS_LOCAL) $(CPPFLAGS) $(EXTRACP
 COMPILE.d = $(CC) $(CFLAGS) $(EXTRACFLAGS) $(CFLAGS_LOCAL) $(CPPFLAGS) $(EXTRACPPFLAGS) $(TARGET_ARCH) -M -MP -MT $<.o -MF $@
 
 all: $(TARGETS)
+
+%.a: $(OBJS) $(ALLDEPS)
+	$(AR) $(ARFLAGS) $@ $(OBJS)
+	$(RANLIB) $@
 
 %.so: $(OBJS) $(ALLDEPS)
 	$(COMPILE.o) $(OUTPUT_OPTION) $(OBJS) $(LOADLIBES) $(LDLIBS) $(LDLIBS_LOCAL)
