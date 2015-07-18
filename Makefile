@@ -3,7 +3,7 @@ SRCS := vc4clist.c
 OBJS := $(SRCS:%.c=%.c.o)
 DEPS := $(SRCS:%.c=%.c.d)
 ALLDEPS = $(MAKEFILE_LIST_SANS_DEPS)
-CFLAGS_LOCAL := -Wall -Wextra -O2 -g
+CFLAGS_LOCAL := -Wall -Wextra -O0 -g -pipe
 ARFLAGS := cr
 
 CC := gcc
